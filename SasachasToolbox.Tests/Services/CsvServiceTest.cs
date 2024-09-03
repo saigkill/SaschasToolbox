@@ -1,3 +1,5 @@
+using global::Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using JetBrains.Annotations;
 
 using Microsoft.Extensions.Logging;

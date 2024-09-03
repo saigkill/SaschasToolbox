@@ -7,13 +7,6 @@
     <LangVersion>8.0</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Label="Analyzer settings">
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <AnalysisLevelPerformance>latest</AnalysisLevelPerformance>
     <PackageId>SaschaManns.$(AssemblyName)</PackageId>
     <Title>Little collection of some methods and services. </Title>
     <Authors>Sascha Manns</Authors>
@@ -24,6 +17,13 @@
     <PackageLicenseExpression>mit</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Analyzer settings">
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevelPerformance>latest</AnalysisLevelPerformance>
   </PropertyGroup>
 
   <ItemGroup>
