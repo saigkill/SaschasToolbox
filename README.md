@@ -13,11 +13,10 @@ This is a collection of my personal tools and libraries.
 |Latest Release|![GitHub Release](https://img.shields.io/github/v/release/saigkill/SaschasToolbox)|
 
 ## Documentation
-Die aktuelle Dokumentation befindet sich [hier](https://gitlab.infas.de/it-entwicklung/isms-common/-/wikis/home).
+Die aktuelle Dokumentation befindet sich [hier](https://github.com/saigkill/SaschasToolbox/wiki).
 
 ## Deployment
-Art der Verteilung zB: Softwareverteilung oder Gitlab-Nuget-Feed.
-Die Verteilung erfolgt über den GitlabNuGet-Server von Infas im
+The deployment to NuGet is done by Github Action. You will find it [there](https://www.nuget.org/packages/SaschaManns.SaschasToolbox/)
 
 ## Installation
 Just add a reference to the NuGet-Package.
