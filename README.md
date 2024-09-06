@@ -10,6 +10,7 @@ This is a collection of my personal tools and libraries.
 |Language|C#|
 |Framework|.NET 8|
 |Continuous Integration|![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/saigkill/SaschasToolbox/dotnet.yml)|
+|Code Coverage|[![Coverage Status](https://coveralls.io/repos/github/saigkill/SaschasToolbox/badge.svg?branch=master)](https://coveralls.io/github/saigkill/SaschasToolbox?branch=master)
 |Latest Release|![GitHub Release](https://img.shields.io/github/v/release/saigkill/SaschasToolbox)|
 
 ## Documentation

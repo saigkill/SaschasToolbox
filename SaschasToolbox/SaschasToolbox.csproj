@@ -17,6 +17,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icons8-toolbox-60.png</PackageIcon>
+    <PackageTags>generators,services,patterns</PackageTags>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Label="Analyzer settings">
@@ -24,9 +28,7 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisLevelPerformance>latest</AnalysisLevelPerformance>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageIcon>icons8-toolbox-60.png</PackageIcon>
-    <PackageTags>generators,services,patterns</PackageTags>
+    
   </PropertyGroup>
 
   <ItemGroup>
