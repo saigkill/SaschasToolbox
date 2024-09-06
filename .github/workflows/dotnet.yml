@@ -108,12 +108,11 @@ jobs:
             dotnet-version: 8.0.x
        - run: |
               find ${{ env.NuGetDirectory }} -type f -name "*.nupkg" | while read -r file; do
-                dotnet nuget push "$file" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_APIKEY }} --skip-duplicate
+                dotnet nuget push "$file" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGETAPIKEY }} --skip-duplicate
                 dotnet nuget push "$file" --source https://nuget.pkg.github.com/saigkill/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
               done              
 
-  doxygen:
-    needs: deploy
+  doxygen:    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
