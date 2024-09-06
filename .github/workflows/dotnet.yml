@@ -110,14 +110,15 @@ jobs:
               find ${{ env.NuGetDirectory }} -type f -name "*.nupkg" | while read -r file; do
                 dotnet nuget push "$file" --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
                 dotnet nuget push "$file" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/saigkill/index.json --skip-duplicate
-              done
+              done              
 
-  doxygen:    
+  doxygen:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Setup Doxygen
-        uses: mattnotmitt/setup-doxygen@1.9.5
+        uses: mattnotmitt/doxygen-action@v1.9.5
         with:          
            doxyfile-path: 'doxygen/Doxyfile'
       - name: Generate Doxygen documentation
