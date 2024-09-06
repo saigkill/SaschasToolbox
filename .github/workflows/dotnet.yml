@@ -41,12 +41,12 @@ jobs:
         run: dotnet restore
       - name: Test
         run: dotnet test --verbosity normal --configuration Release /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
-      - run: ls
+      - run: ls SaschasToolbox.Tests/TestResults
       - name: Publish coverage report to coveralls.io
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: SaschasToolbox/SaschasToolbox.Tests/TestResults/coverage.*.info
+          path-to-lcov: SaschasToolbox.Tests/TestResults/coverage.net8.0.info
 
   create_nuget:
     needs: test
