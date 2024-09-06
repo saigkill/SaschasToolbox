@@ -20,7 +20,6 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icons8-toolbox-60.png</PackageIcon>
     <PackageTags>generators,services,patterns</PackageTags>
-    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Label="Analyzer settings">
