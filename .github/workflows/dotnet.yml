@@ -94,7 +94,6 @@ jobs:
         run: meziantou.validate-nuget-package ${{ github.workspace }}/nuget/*
 
   deploy:
-    if: github.event_name == 'release'
     runs-on: ubuntu-latest
     needs: validate_nuget
     steps:
@@ -113,8 +112,7 @@ jobs:
                 dotnet nuget push "$file" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/saigkill/index.json --skip-duplicate
               done
 
-  doxygen:
-    if: github.event_name == 'release'
+  doxygen:    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
