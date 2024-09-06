@@ -15,11 +15,10 @@
     <PackageProjectUrl>https://github.com/saigkill/SaschasToolbox</PackageProjectUrl>
     <RepositoryUrl>https://github.com/saigkill/SaschasToolbox.git</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icons8-toolbox-60.png</PackageIcon>
     <PackageTags>generators,services,patterns</PackageTags>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Label="Analyzer settings">
@@ -27,7 +26,6 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisLevelPerformance>latest</AnalysisLevelPerformance>
-    
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,6 +34,10 @@
       <PackagePath>\</PackagePath>
     </None>
     <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="SaschasToolbox\bin\Release\*\SaschasToolbox.xml">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
