@@ -109,7 +109,7 @@ jobs:
        - run: |
               find ${{ env.NuGetDirectory }} -type f -name "*.nupkg" | while read -r file; do
                 dotnet nuget push "$file" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGETAPIKEY }} --skip-duplicate
-                dotnet nuget push "$file" --source https://nuget.pkg.github.com/saigkill/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+                dotnet nuget push "$file" --source https://nuget.pkg.github.com/saigkill/SaschasToolbox/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
               done              
 
   doxygen:    
@@ -119,9 +119,7 @@ jobs:
       - name: Setup Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:          
-           doxyfile-path: 'doxygen/Doxyfile'
-      - name: Generate Doxygen documentation
-        run: doxygen Doxyfile
+           doxyfile-path: 'doxygen/Doxyfile'      
       - name: Deploy Doxygen documentation
         uses: peaceiris/actions-gh-pages@v4
         with:
