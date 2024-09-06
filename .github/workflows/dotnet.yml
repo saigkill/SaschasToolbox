@@ -112,3 +112,20 @@ jobs:
                 dotnet nuget push "$file" --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
                 dotnet nuget push "$file" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/saigkill/index.json --skip-duplicate
               done
+
+  doxygen:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Doxygen
+        uses: mattnotmitt/setup-doxygen@1.9.5
+        with:          
+           doxyfile-path: 'doxygen/Doxyfile'
+      - name: Generate Doxygen documentation
+        run: doxygen Doxyfile
+      - name: Deploy Doxygen documentation
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./documentation/html
