@@ -25,9 +25,15 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisLevelPerformance>latest</AnalysisLevelPerformance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icons8-toolbox-60.png</PackageIcon>
+    <PackageTags>generators,services,patterns</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\assets\icons8-toolbox-60.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
