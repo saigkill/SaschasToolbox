@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  NuGetDirectory: ${{ github.workspace }}/nuget
+
 jobs:
   build:
 
@@ -23,12 +26,75 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release
-    - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration Release
-    - name: Publish
-      run: |          
-          cd SaschasToolbox
-          dotnet pack
-          cd bin/Release          
-          dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGETAPIKEY }} --skip-duplicate      
+      run: dotnet build --no-restore --configuration Release    
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Test
+        run: dotnet test --no-build --verbosity normal --configuration Release
+
+  create_nuget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+           fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nuget
+          if-no-files-found: error
+          retention-days: 7
+          path: ${{ env.NuGetDirectory }}/*.nupkg
+
+  validate_nuget:
+    runs-on: ubuntu-latest
+    needs: create_nuget
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: nuget
+          path: ${{ github.workspace }}/nuget
+
+      - name: Install nuget validator
+        run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
+
+      - name: Validate nuget package
+        run: meziantou.validate-nuget-package ${{ github.workspace }}/nuget/*.nupkg
+
+  deploy:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    needs: validate_nuget
+    steps:
+       - uses: actions/download-artifact@v2
+         with:
+           name: nuget
+           path: ${{ github.workspace }}/nuget
+
+       - name: Setup .NET
+         uses: actions/setup-dotnet@v4
+         with:
+            dotnet-version: 8.0.x
+       - run: |
+              find ${{ env.NuGetDirectory }} -type f -name "*.nupkg" | while read -r file; do
+                dotnet nuget push "$file" --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+              done

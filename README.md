@@ -13,7 +13,7 @@ This is a collection of my personal tools and libraries.
 |Latest Release|![GitHub Release](https://img.shields.io/github/v/release/saigkill/SaschasToolbox)|
 
 ## Documentation
-Die aktuelle Dokumentation befindet sich [hier](https://github.com/saigkill/SaschasToolbox/wiki).
+A little documentation is [there](https://github.com/saigkill/SaschasToolbox/wiki).
 
 ## Deployment
 The deployment to NuGet is done by Github Action. You will find it [there](https://www.nuget.org/packages/SaschaManns.SaschasToolbox/)
