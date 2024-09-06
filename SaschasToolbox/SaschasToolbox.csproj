@@ -14,7 +14,7 @@
     <Copyright>(c) 2024 Sascha Manns</Copyright>
     <PackageProjectUrl>https://github.com/saigkill/SaschasToolbox</PackageProjectUrl>
     <RepositoryUrl>https://github.com/saigkill/SaschasToolbox.git</RepositoryUrl>
-    <PackageLicenseExpression>mit</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
