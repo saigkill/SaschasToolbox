@@ -62,7 +62,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release /p:ContinuousIntegrationBuild=true
       - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
 
       - uses: actions/upload-artifact@v2
