@@ -85,7 +85,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: nuget
-          path: ${{ github.workspace }}/nuget
+          path: ${{ env.NuGetDirectory }}
 
       - name: Install nuget validator
         run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
@@ -100,7 +100,7 @@ jobs:
        - uses: actions/download-artifact@v2
          with:
            name: nuget
-           path: ${{ github.workspace }}/nuget
+           path: ${{ env.NuGetDirectory }}
 
        - name: Setup .NET
          uses: actions/setup-dotnet@v4
@@ -108,8 +108,8 @@ jobs:
             dotnet-version: 8.0.x
        - run: |
               find ${{ env.NuGetDirectory }} -type f -name "*.nupkg" | while read -r file; do
-                dotnet nuget push "$file" --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-                dotnet nuget push "$file" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/saigkill/index.json --skip-duplicate
+                dotnet nuget push "$file" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_APIKEY }} --skip-duplicate
+                dotnet nuget push "$file" --source https://nuget.pkg.github.com/saigkill/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
               done              
 
   doxygen:
