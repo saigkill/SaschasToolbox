@@ -41,6 +41,7 @@ jobs:
         run: dotnet restore
       - name: Test
         run: dotnet test --verbosity normal --configuration Release /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+      - run: ls TestResults
       - name: Publish coverage report to coveralls.io
         uses: coverallsapp/github-action@master
         with:
