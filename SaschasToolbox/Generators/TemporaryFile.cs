@@ -29,7 +29,9 @@ namespace SaschasToolbox.Generators
 		/// <summary>
 		/// Finalizes an instance of the <see cref="TemporaryFile"/> class.
 		/// </summary>
+#pragma warning disable MA0055
 		~TemporaryFile()
+#pragma warning restore MA0055
 		{
 			Delete();
 		}

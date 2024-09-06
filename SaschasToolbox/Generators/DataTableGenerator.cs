@@ -81,7 +81,9 @@ namespace SaschasToolbox.Generators
 						Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType);
 				}
 			}
+#pragma warning disable S2139
 			catch (Exception ex)
+#pragma warning restore S2139
 			{
 				_logger.LogError(ex, "Error while working with {PropertyName}, Error: {ExMessage}", property.Name, ex.Message);
 				throw;
@@ -108,7 +110,9 @@ namespace SaschasToolbox.Generators
 					row[property.Name] = (property.GetValue(model) is null) ? DBNull.Value : property.GetValue(model);
 				}
 			}
+#pragma warning disable S2139
 			catch (Exception ex)
+#pragma warning restore S2139
 			{
 				_logger.LogError(ex, "Error while working with {PropertyName}, Error: {ExMessage}", property.Name, ex.Message);
 				throw;

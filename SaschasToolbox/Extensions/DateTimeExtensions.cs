@@ -1,6 +1,7 @@
 using Ardalis.GuardClauses;
 
 using System;
+#pragma warning disable MA0011
 
 namespace SaschasToolbox.Extensions
 {

@@ -70,7 +70,9 @@ namespace SaschasToolbox.Patterns
 				{
 					result = await step.ExecuteAsync(result).ConfigureAwait(false);
 				}
+#pragma warning disable S2139
 				catch (Exception ex)
+#pragma warning restore S2139
 				{
 					_logger.LogError(ex, "Error in pipeline {Name} at step {Step}", Name, step.GetType().Name);
 					throw;

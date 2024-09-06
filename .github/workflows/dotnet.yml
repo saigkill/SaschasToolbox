@@ -110,4 +110,5 @@ jobs:
        - run: |
               find ${{ env.NuGetDirectory }} -type f -name "*.nupkg" | while read -r file; do
                 dotnet nuget push "$file" --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+                dotnet nuget push "$file" --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/saigkill/index.json --skip-duplicate
               done
